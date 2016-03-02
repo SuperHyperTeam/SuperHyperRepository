@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{AB84DCBF-3A7F-7519-0EE1-CEE0584756A9}</ProjectGuid>
+    <ProjectGuid>{D08BA5F5-FB49-13DE-EB65-B5A2836F0F32}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -67,11 +67,14 @@
      <Compile Include="Assets\Acrocatic\Scripts\Player\PlayerRun.cs" />
      <Compile Include="Assets\Acrocatic\Scripts\Player\PlayerWall.cs" />
      <Compile Include="Assets\CollisionCheck.cs" />
+     <Compile Include="Assets\Combos.cs" />
      <Compile Include="Assets\GameController.cs" />
+     <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\PickupSpawner.cs" />
      <Compile Include="Assets\PlayerCollisions.cs" />
      <Compile Include="Assets\PlayerPickup.cs" />
      <Compile Include="Assets\PlayerStats.cs" />
+     <Compile Include="Assets\SimplePlatformController.cs" />
      <Compile Include="Assets\_Scripts\CustomController.cs" />
      <Compile Include="Assets\_Scripts\CustomDash.cs" />
  <Reference Include="UnityEngine.Networking">
