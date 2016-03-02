@@ -1,0 +1,33 @@
+Initialize engine version: 5.2.3f1 (f3d16a1fa2dd)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 10.18.13.5850]
+    Renderer: NVIDIA GeForce GTX 760
+    Vendor:   NVIDIA
+    VRAM:     1989 MB (via DXGI)
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 NULL=1 RESZ=0 SlowINTZ=0
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Captain\Documents\SuperHyperJump\test1_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Captain\Documents\SuperHyperJump\test1_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Captain\Documents\SuperHyperJump\test1_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Captain\Documents\SuperHyperJump\test1_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Captain\Documents\SuperHyperJump\test1_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Captain\Documents\SuperHyperJump\test1_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Captain\Documents\SuperHyperJump\test1_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Captain\Documents\SuperHyperJump\test1_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Captain\Documents\SuperHyperJump\test1_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.181 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+Platform assembly: C:\Users\Captain\Documents\SuperHyperJump\test1_Data\Managed\System.dll (this message is harmless)
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 48c -> priority: 1 
+  Thread -> id: 3a40 -> priority: 1 
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 15.117122 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 431.
+Total: 0.632893 ms (FindLiveObjects: 0.067810 ms CreateObjectMapping: 0.065549 ms MarkObjects: 0.485406 ms  DeleteObjects: 0.012714 ms)
+

@@ -1,0 +1,17 @@
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/obj/Debug/Assembly-CSharp.dll
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/obj/Debug/Assembly-CSharp.dll.mdb
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/UnityEngine.dll
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/UnityEditor.dll
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/Mono.Cecil.dll
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/Unity.DataContract.dll
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/gagemelton/Documents/UNITY Projects/SuperHyperJump/Temp/bin/Debug/Mono.Cecil.Mdb.dll
