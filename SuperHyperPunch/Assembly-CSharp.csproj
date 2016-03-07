@@ -45,38 +45,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Acrocatic\Scripts\General\CameraFollow.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\General\CameraShake.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\General\Death.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\General\GameSettings.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\General\Ladder.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\General\ShowCollider.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Platforms\JumpThroughDown.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Platforms\JumpThroughUp.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Platforms\Platform.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Platforms\PlatformJumpThrough.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Platforms\PlatformMove.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Platforms\PlatformSink.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Player\Player.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Player\PlayerCrouch.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Player\PlayerDash.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Player\PlayerHitbox.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Player\PlayerJump.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Player\PlayerLadder.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Player\PlayerPlatform.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Player\PlayerRun.cs" />
-     <Compile Include="Assets\Acrocatic\Scripts\Player\PlayerWall.cs" />
-     <Compile Include="Assets\CollisionCheck.cs" />
-     <Compile Include="Assets\Combos.cs" />
-     <Compile Include="Assets\GameController.cs" />
-     <Compile Include="Assets\GameManager.cs" />
-     <Compile Include="Assets\PickupSpawner.cs" />
-     <Compile Include="Assets\PlayerCollisions.cs" />
-     <Compile Include="Assets\PlayerPickup.cs" />
-     <Compile Include="Assets\PlayerStats.cs" />
-     <Compile Include="Assets\SimplePlatformController.cs" />
-     <Compile Include="Assets\_Scripts\CustomController.cs" />
-     <Compile Include="Assets\_Scripts\CustomDash.cs" />
+     <Compile Include="Assets\Kino\Fringe\Fringe.cs" />
+     <Compile Include="Assets\Kino\Glitch\AnalogGlitch.cs" />
+     <Compile Include="Assets\Kino\Glitch\DigitalGlitch.cs" />
+     <Compile Include="Assets\_Scripts\CollisionCheck.cs" />
+     <Compile Include="Assets\_Scripts\Combos.cs" />
+     <Compile Include="Assets\_Scripts\GameController.cs" />
+     <Compile Include="Assets\_Scripts\GameManager.cs" />
+     <Compile Include="Assets\_Scripts\HitCheck.cs" />
+     <Compile Include="Assets\_Scripts\PickupSpawner.cs" />
+     <Compile Include="Assets\_Scripts\PlayerPickup.cs" />
+     <Compile Include="Assets\_Scripts\PlayerStats.cs" />
+     <Compile Include="Assets\_Scripts\SimplePlatformController.cs" />
+     <None Include="Assets\Kino\Glitch\Shader\AnalogGlitch.shader" />
+     <None Include="Assets\Kino\Glitch\Shader\DigitalGlitch.shader" />
+     <None Include="Assets\Kino\Fringe\Shader\Fringe.shader" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>

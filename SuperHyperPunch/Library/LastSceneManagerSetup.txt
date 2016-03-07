@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/FreshMain.unity
+- path: Assets/_Scenes/FreshMain.unity
   isLoaded: 1
   isActive: 1
