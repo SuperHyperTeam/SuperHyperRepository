@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{87CB76BA-45A1-AB2B-3004-E0603531841D}") = "SuperHyperPunch", "Assembly-CSharp.csproj", "{D08BA5F5-FB49-13DE-EB65-B5A2836F0F32}"
 EndProject
+Project("{87CB76BA-45A1-AB2B-3004-E0603531841D}") = "SuperHyperPunch", "Assembly-CSharp-Editor.csproj", "{9BC27A85-266D-1FDA-CE0D-1787C0D6084E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{D08BA5F5-FB49-13DE-EB65-B5A2836F0F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D08BA5F5-FB49-13DE-EB65-B5A2836F0F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D08BA5F5-FB49-13DE-EB65-B5A2836F0F32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BC27A85-266D-1FDA-CE0D-1787C0D6084E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BC27A85-266D-1FDA-CE0D-1787C0D6084E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BC27A85-266D-1FDA-CE0D-1787C0D6084E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BC27A85-266D-1FDA-CE0D-1787C0D6084E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
