@@ -6,6 +6,7 @@ Description:
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -32,7 +33,15 @@ public class GameManager : MonoBehaviour {
 	public float gameTimer {get; set;}
 	public float gameRound {get; set;}
 
+	private float countdownTimer = 4;
+	private int displayTime;
+	public float roundStartTime;
+	public Text StartTimeText;
+
 	public bool isPaused {get; set;}
+
+	public GameObject player1obj, player2obj;
+	private SimplePlatformController player1, player2;
 	#endregion
 
 	#region Unity Event Functions
@@ -44,11 +53,31 @@ public class GameManager : MonoBehaviour {
 			Destroy(gameObject);    
 
 		DontDestroyOnLoad(gameObject);
+
+		player1 = player1obj.GetComponent<SimplePlatformController> ();
+		player2 = player2obj.GetComponent<SimplePlatformController> ();
+		player1.inControl = false;
+		player2.inControl = false;
 	}
 
 	void Update()
 	{
+		countdownTimer -= Time.deltaTime;
 		gameTimer += Time.deltaTime;
+		displayTime = (int)countdownTimer;
+
+		if (displayTime > 0)
+			StartTimeText.text = "" + displayTime;
+
+		else if (displayTime == 0){
+			player1.inControl = true;
+			player2.inControl = true;
+			StartTimeText.text = "GO!";
+		}
+		else if (displayTime <= -1){
+			StartTimeText.text = "";
+		}
+
 		if(gameTimer > matchTime || !isAliveP1 || !isAliveP2)
 		{
 			gameTimer = 0;
@@ -72,11 +101,11 @@ public class GameManager : MonoBehaviour {
 
 	public void NewRound()
 	{
-		if(roundsWonP1 > numberOfRounds/2 || roundsWonP2 > numberOfRounds/2)
-			Debug.Log("Game Complete, go to winner state");
+		if(roundsWonP1 > numberOfRounds/2 || roundsWonP2 > numberOfRounds/2){}
+			//Debug.Log("Game Complete, go to winner state");
 		else
 		{
-			Debug.Log("reset timer, go to new round etc.");
+			//Debug.Log("reset timer, go to new round etc.");
 			gameRound++;
 		}
 	}
