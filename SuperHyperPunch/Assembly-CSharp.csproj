@@ -48,6 +48,8 @@
      <Compile Include="Assets\Kino\Fringe\Fringe.cs" />
      <Compile Include="Assets\Kino\Glitch\AnalogGlitch.cs" />
      <Compile Include="Assets\Kino\Glitch\DigitalGlitch.cs" />
+     <Compile Include="Assets\Scripts\HealthBarScript.cs" />
+     <Compile Include="Assets\Scripts\MovementandHealthScript.cs" />
      <Compile Include="Assets\VHS\Scripts\VHSPostProcessEffect.cs" />
      <Compile Include="Assets\_Scripts\CRT.cs" />
      <Compile Include="Assets\_Scripts\CollisionCheck.cs" />
