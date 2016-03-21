@@ -19,7 +19,7 @@ public class SimplePlatformController : MonoBehaviour {
 	public float vertKnockbackForce;
 
 	private bool punch;
-	public bool punchLeft, punchRight, punchUp, punchDown; //if punching and what direction
+	[HideInInspector]public bool punchLeft, punchRight, punchUp, punchDown; //if punching and what direction
 
 	//Gravity Delay
 	public float gravModifier; //What to make the gravity while punching
@@ -37,7 +37,7 @@ public class SimplePlatformController : MonoBehaviour {
 	public float punchTime;
 	private float punchTimer;
 
-	private bool inControl;
+	[HideInInspector]public bool inControl;
 
 	private bool grounded = false;
 	private Animator anim;
@@ -117,6 +117,12 @@ public class SimplePlatformController : MonoBehaviour {
 			rb2d.AddForce (direction * horKnockbackForce);
 		} else
 			rb2d.AddForce (direction * vertKnockbackForce);
+	}
+
+	public void Knockout(){
+		dead = true;
+		GetComponent<SpriteRenderer> ().enabled = false;
+		GetComponent<BoxCollider2D> ().enabled = false;
 	}
 
 	void FixedUpdate()

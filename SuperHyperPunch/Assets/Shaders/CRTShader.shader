@@ -2,7 +2,10 @@
 {
     Properties
     {
+    	//Coefficients
         _MainTex("Base (RGB)", 2D) = "white" {}
+        _VertsColor("Verts fill color", Float) = 0
+        _VertsColor2("Verts fill color 2", Float) = 0
     }
  
         SubShader
@@ -25,8 +28,11 @@
         float2 uv       : TEXCOORD0;
         float4 scr_pos : TEXCOORD1;
     };
- 
+
+    //Links
     uniform sampler2D _MainTex;
+    uniform float _VertsColor;
+    uniform float _VertsColor2;
  
     v2f vert(appdata_img v)
     {
@@ -45,10 +51,15 @@
  
         int pp = (int)(ps.x) % 3;
         float4 outcolor = float4(0, 0, 0, 1);
- 
-        if (pp == 0) outcolor.r = color.r;
-        else if (pp == 1) outcolor.g = color.g;
-        else if (pp == 2) outcolor.b = color.b;
+
+
+//        if (pp == 1) outcolor.r = color.r;
+//        	else if (pp == 1) outcolor.g = color.g;
+//        		else outcolor.b = color.b;
+
+        if (pp == 1){muls.r = 1; muls.g = _VertsColor2;}
+        	else if (pp == 2) {muls.g = 1; muls.b = _VertsColor2;}
+        		else {muls.b = 1; muls.r = _VertsColor2;} color = color * muls;
        
         return outcolor;
     }
