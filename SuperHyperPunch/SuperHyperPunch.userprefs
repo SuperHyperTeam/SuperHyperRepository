@@ -1,10 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/SimplePlatformController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/CollisionCheck.cs">
     <Files>
-      <File FileName="Assets/_Scripts/CollisionCheck.cs" Line="48" Column="30" />
-      <File FileName="Assets/_Scripts/SimplePlatformController.cs" Line="125" Column="50" />
-      <File FileName="Assets/_Scripts/GameManager.cs" Line="69" Column="20" />
+      <File FileName="Assets/_Scripts/CollisionCheck.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/GameController.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/SimplePlatformController.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/HealthBarScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
