@@ -1,6 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{87CB76BA-45A1-AB2B-3004-E0603531841D}") = "SuperHyperPunch", "Assembly-CSharp-firstpass-vs.csproj", "{2AE81DE2-91D1-80D0-F297-81E43B3955D4}"
+EndProject
 Project("{87CB76BA-45A1-AB2B-3004-E0603531841D}") = "SuperHyperPunch", "Assembly-CSharp-vs.csproj", "{D08BA5F5-FB49-13DE-EB65-B5A2836F0F32}"
 EndProject
 Project("{87CB76BA-45A1-AB2B-3004-E0603531841D}") = "SuperHyperPunch", "Assembly-CSharp-Editor-vs.csproj", "{9BC27A85-266D-1FDA-CE0D-1787C0D6084E}"
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AE81DE2-91D1-80D0-F297-81E43B3955D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AE81DE2-91D1-80D0-F297-81E43B3955D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AE81DE2-91D1-80D0-F297-81E43B3955D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AE81DE2-91D1-80D0-F297-81E43B3955D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D08BA5F5-FB49-13DE-EB65-B5A2836F0F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D08BA5F5-FB49-13DE-EB65-B5A2836F0F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D08BA5F5-FB49-13DE-EB65-B5A2836F0F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -23,7 +29,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-													GlobalSection(MonoDevelopProperties) = preSolution
+																						GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 

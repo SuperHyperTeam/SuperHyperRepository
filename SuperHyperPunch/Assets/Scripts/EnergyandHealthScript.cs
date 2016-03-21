@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-public class MovementandHealthScript : MonoBehaviour {
+public class EnergyandHealthScript : MonoBehaviour {
 	
 	public Slider healthBarSlider;  //reference for slider
 	public Text gameOverText;   //reference for text
@@ -21,7 +21,7 @@ public class MovementandHealthScript : MonoBehaviour {
 	void Update () {
 		//check if game is over i.e., health is greater than 0
 		if(!isGameOver)
-			transform.Translate(Input.GetAxis("Horizontal")*Time.deltaTime*10f, 0, 0); //get input
+			//transform.Translate(Input.GetAxis("Horizontal")*Time.deltaTime*10f, 0, 0); //get input
 			
 			IncreaseEnergy();
 			DecreaseEnergy();
@@ -29,8 +29,9 @@ public class MovementandHealthScript : MonoBehaviour {
 	
 	//Check if player enters/stays on the fire
 	void OnTriggerStay(Collider other){
-		//if player triggers fire object and health is greater than 0
-		if(other.gameObject.name=="OtherPlayer" && healthBarSlider.value>0){
+		Debug.Log("ontriggerstay being called");
+			if(other.gameObject.tag=="Player" && healthBarSlider.value>0){
+			Debug.Log ("inside if");
 			healthBarSlider.value -=1.0f;  //reduce health
 		}
 		else{
