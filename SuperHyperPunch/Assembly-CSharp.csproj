@@ -57,7 +57,7 @@
      <Compile Include="Assets\_Scripts\Combos.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\GameManager.cs" />
-     <Compile Include="Assets\_Scripts\HitCheck.cs" />
+     <Compile Include="Assets\_Scripts\PhysicsMaterialChanger.cs" />
      <Compile Include="Assets\_Scripts\PickupSpawner.cs" />
      <Compile Include="Assets\_Scripts\PlayerPickup.cs" />
      <Compile Include="Assets\_Scripts\PlayerStats.cs" />

@@ -4,15 +4,19 @@ Created By: Trevor Tomasic
 Description:
  */
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
 public class Combos : MonoBehaviour {
 
+	public Slider energyBarSlider;  //reference for slider
+
 	#region Variables
 	private bool inputAvailable = true;
 	//private bool joystickInput = false;
 	private Animator anim;
+	private SimplePlatformController player;
 	//private AnimationClip [] animClip;
 	//public Animation animation;
 
@@ -48,6 +52,7 @@ public class Combos : MonoBehaviour {
 	void Awake()
 	{
 		anim = GetComponent<Animator>();
+		player = GetComponent<SimplePlatformController> ();
 	}
 
 	void Update () 
@@ -93,32 +98,32 @@ public class Combos : MonoBehaviour {
 //				}
 		//	}
 
-			if (Input.GetKeyDown(KeyCode.W))
+			if (Input.GetAxis(player.vertInputName) > 0f)
 			{
 					if(!up)
 						AddCombo("up");
 					up = true;
 			}
-			if (Input.GetKeyDown(KeyCode.S))
+			if (Input.GetAxis(player.vertInputName) < 0f)
 			{
 					if(!down)
 						AddCombo("down");
 					down = true;
 			}
-			if (Input.GetKeyDown(KeyCode.A))
+			if (Input.GetAxis(player.horInputName) < 0f)
 			{
 					if(!left)
 						AddCombo("left");	
 					left = true;
 			}
-			if (Input.GetKeyDown(KeyCode.D))
+			if (Input.GetAxis(player.horInputName) > 0f)
 			{
 					if(!right)
 						AddCombo("right");		
 					right = true;
 			}
 			
-			if(Input.GetKeyDown(KeyCode.Space))
+			if(Input.GetButtonDown(player.punchInputName))
 			{
 				if(!punch)
 					AddCombo("punch");
@@ -185,54 +190,56 @@ public class Combos : MonoBehaviour {
 
 	private void SetCombo(string input)
 	{
-		switch(input)
-		{	
-		case "up":
-			Debug.Log("up");
-			break;
 
-		case "upright":
-			Debug.Log("up right");
-			break;
+		if (energyBarSlider.value != 0.0f) {
+			switch (input) {	
+			case "up":
+				Debug.Log ("up");
+				break;
 
-		case "upleft":
-			Debug.Log("upleft");
-			break;
+			case "upright":
+				Debug.Log ("up right");
+				break;
 
-		case "down":
-			Debug.Log("down");
-			break;
+			case "upleft":
+				Debug.Log ("up left");
+				break;
 
-		case "left":
-			Debug.Log("left");
-			break;
+			case "down":
+				Debug.Log ("down");
+				break;
 
-		case "right":
-			Debug.Log("right");
-			break;
+			case "left":
+				Debug.Log ("left");
+				break;
 
-		case "punch":
-			Debug.Log("punch");
-			break;
+			case "right":
+				Debug.Log ("right");
+				break;
 
-		case "uppunch":
-			Debug.Log("up punch");
-			break;
+			case "punch":
+				Debug.Log ("punch");
+				break;
 
-		case "updownpunch":
-			Debug.Log("up down punch");
-			break;
+			case "uppunch":
+				Debug.Log ("up punch");
+				break;
 
-		case "punchupdownpunch":
-			Debug.Log("punch up down punch");
-			break;
+			case "updownpunch":
+				Debug.Log ("up down punch");
+				break;
 
-		default:
-			Debug.Log(comboCodeDefault);
-			break;
+			case "punchupdownpunch":
+				Debug.Log ("punch up down punch");
+				break;
+
+			default:
+				Debug.Log (comboCodeDefault);
+				break;
 
 			//ExecuteCombo(input);
-		}
-	}
+			}//end switch
+		}//end if
+	}//end setcombo
 	#endregion
 }
