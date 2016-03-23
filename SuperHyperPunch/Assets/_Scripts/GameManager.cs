@@ -78,6 +78,10 @@ public class GameManager : MonoBehaviour {
 			StartTimeText.text = "";
 		}
 
+		if (Input.GetKeyDown(KeyCode.Alpha3)){
+			Application.LoadLevel (Application.loadedLevel);
+		}
+
 		if(gameTimer > matchTime || !isAliveP1 || !isAliveP2)
 		{
 			gameTimer = 0;
