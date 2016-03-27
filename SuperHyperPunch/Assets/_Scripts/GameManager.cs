@@ -33,11 +33,6 @@ public class GameManager : MonoBehaviour {
 	public float gameTimer {get; set;}
 	public float gameRound {get; set;}
 
-	private float countdownTimer = 4;
-	private int displayTime;
-	public float roundStartTime;
-	public Text StartTimeText;
-
 	public bool isPaused {get; set;}
 
 	public GameObject player1obj, player2obj;
@@ -62,21 +57,7 @@ public class GameManager : MonoBehaviour {
 
 	void Update()
 	{
-		countdownTimer -= Time.deltaTime;
 		gameTimer += Time.deltaTime;
-		displayTime = (int)countdownTimer;
-
-		if (displayTime > 0)
-			StartTimeText.text = "" + displayTime;
-
-		else if (displayTime == 0){
-			player1.inControl = true;
-			player2.inControl = true;
-			StartTimeText.text = "GO!";
-		}
-		else if (displayTime <= -1){
-			StartTimeText.text = "";
-		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha3)){
 			Application.LoadLevel (Application.loadedLevel);

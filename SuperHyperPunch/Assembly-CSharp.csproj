@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AnimateCanvasSprite.cs" />
      <Compile Include="Assets\Kino\Fringe\Fringe.cs" />
      <Compile Include="Assets\Kino\Glitch\AnalogGlitch.cs" />
      <Compile Include="Assets\Kino\Glitch\DigitalGlitch.cs" />
@@ -55,6 +56,8 @@
      <Compile Include="Assets\_Scripts\CRT.cs" />
      <Compile Include="Assets\_Scripts\CollisionCheck.cs" />
      <Compile Include="Assets\_Scripts\Combos.cs" />
+     <Compile Include="Assets\_Scripts\CountdownTimer.cs" />
+     <Compile Include="Assets\_Scripts\DontDestroy.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\GameManager.cs" />
      <Compile Include="Assets\_Scripts\PhysicsMaterialChanger.cs" />
