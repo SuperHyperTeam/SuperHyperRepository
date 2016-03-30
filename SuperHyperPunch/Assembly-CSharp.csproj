@@ -45,7 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AnimateCanvasSprite.cs" />
      <Compile Include="Assets\Kino\Fringe\Fringe.cs" />
      <Compile Include="Assets\Kino\Glitch\AnalogGlitch.cs" />
      <Compile Include="Assets\Kino\Glitch\DigitalGlitch.cs" />
@@ -53,6 +52,7 @@
      <Compile Include="Assets\Scripts\HealthBarScript.cs" />
      <Compile Include="Assets\Scripts\TestHealthandMovement.cs" />
      <Compile Include="Assets\VHS\Scripts\VHSPostProcessEffect.cs" />
+     <Compile Include="Assets\_Scripts\AnimateCanvasSprite.cs" />
      <Compile Include="Assets\_Scripts\CRT.cs" />
      <Compile Include="Assets\_Scripts\CollisionCheck.cs" />
      <Compile Include="Assets\_Scripts\Combos.cs" />
@@ -60,6 +60,7 @@
      <Compile Include="Assets\_Scripts\DontDestroy.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\GameManager.cs" />
+     <Compile Include="Assets\_Scripts\MenuManager.cs" />
      <Compile Include="Assets\_Scripts\PhysicsMaterialChanger.cs" />
      <Compile Include="Assets\_Scripts\PickupSpawner.cs" />
      <Compile Include="Assets\_Scripts\PlayerPickup.cs" />

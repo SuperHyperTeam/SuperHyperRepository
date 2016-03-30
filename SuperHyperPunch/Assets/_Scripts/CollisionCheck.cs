@@ -29,8 +29,17 @@ public class CollisionCheck : MonoBehaviour {
 //					-collision.contacts[0].normal) * other.knockbackForce,   
 //					ForceMode2D.Impulse);
 			}
-			else if (c.collider.tag == "Hitbox" && c.otherCollider.tag == "Player"){
-				c.otherCollider.GetComponentInParent<SimplePlatformController> ().Knockout ();
+			else if (c.collider.tag == "Hitbox" && c.otherCollider.tag == "Player1"){
+				GameObject otherPlayer = c.otherCollider.gameObject;
+				if (otherPlayer.gameObject.activeSelf) {
+					c.otherCollider.GetComponent<SimplePlatformController> ().Knockout ();
+				}
+			}
+			else if (c.collider.tag == "Hitbox" && c.otherCollider.tag == "Player2"){
+				GameObject otherPlayer = c.otherCollider.gameObject;
+				if (otherPlayer.gameObject.activeSelf) {
+					c.otherCollider.GetComponent<SimplePlatformController> ().Knockout ();
+				}
 			}
 		}
 	}

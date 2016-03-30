@@ -24,7 +24,7 @@ public class Combos : MonoBehaviour {
 	private float timer = 0;
 	[SerializeField]
 	private float comboTime = 0;
-	private float comboRate = .25f;
+	public float comboRate = .25f;
 	private string comboCode;
 	private string comboCodeDefault;
 
@@ -43,6 +43,9 @@ public class Combos : MonoBehaviour {
 
 	Queue<string> ComboQueue = new Queue<string>(); 
 
+	public string hyperPunch, superHyperPunch, hyperPunchAlt, superHyperPunchAlt;
+	public string hyperPunchDirection, superHyperPunchDirection;
+
 	GameManager gm;
 	//Movement movement = gameObject.GetComponent<Movement>();
 
@@ -55,7 +58,7 @@ public class Combos : MonoBehaviour {
 		player = GetComponent<SimplePlatformController> ();
 	}
 
-	void Update () 
+	void FixedUpdate () 
 	{
 		if(inputAvailable)
 		{
@@ -192,53 +195,113 @@ public class Combos : MonoBehaviour {
 	{
 
 		if (energyBarSlider.value != 0.0f) {
-			switch (input) {	
-			case "up":
-				Debug.Log ("up");
-				break;
+			//Standard Punches
+			if (input == "rightpunch"){
+				player.SetTimers ();
+				player.SuperPunch ("forward");
+			}
+			if (input == "leftpunch"){
+				player.SetTimers ();
+				player.SuperPunch ("forward");
+			}
+			if (input == "uppunch"){
+				player.SetTimers ();
+				player.SuperPunch ("up");
+			}
+			if (input == "downpunch"){
+				player.SetTimers ();
+				player.SuperPunch ("down");
+			}
+			//Combo Punches
+			if (input == hyperPunch){
+				Debug.Log (hyperPunch);
+				player.SetTimers ();
+				player.HyperPunch (hyperPunchDirection);
+			}
+			else if (input == hyperPunchAlt){
+				Debug.Log (hyperPunchAlt);
+				player.SetTimers ();
+				player.HyperPunch (hyperPunchDirection);
+			}
+			else if (input == superHyperPunch){
+				Debug.Log (superHyperPunch);
+				player.SetTimers ();
+				player.SuperHyperPunch (superHyperPunchDirection);
+			}
+			else if (input == superHyperPunchAlt){
+				Debug.Log (superHyperPunchAlt);
+				player.SetTimers ();
+				player.SuperHyperPunch (superHyperPunchDirection);
+			}
 
-			case "upright":
-				Debug.Log ("up right");
-				break;
 
-			case "upleft":
-				Debug.Log ("up left");
-				break;
-
-			case "down":
-				Debug.Log ("down");
-				break;
-
-			case "left":
-				Debug.Log ("left");
-				break;
-
-			case "right":
-				Debug.Log ("right");
-				break;
-
-			case "punch":
-				Debug.Log ("punch");
-				break;
-
-			case "uppunch":
-				Debug.Log ("up punch");
-				break;
-
-			case "updownpunch":
-				Debug.Log ("up down punch");
-				break;
-
-			case "punchupdownpunch":
-				Debug.Log ("punch up down punch");
-				break;
-
-			default:
-				Debug.Log (comboCodeDefault);
-				break;
+//			switch (input) {	
+//			case "punchup":
+//				Debug.Log ("punchup");
+//				break;
+//
+//			case "punchright":
+//				Debug.Log ("up right");
+//				break;
+//
+//			case "punchleft":
+//				Debug.Log ("up left");
+//				break;
+//
+//			case "punchdown":
+//				Debug.Log ("down");
+//				break;
+//
+//			case "left":
+//				Debug.Log ("left");
+//				break;
+//
+//			case "right":
+//				Debug.Log ("right");
+//				break;
+//
+//			case "punch":
+//				Debug.Log ("punch");
+//				break;
+//
+//			case "uppunch":
+//				Debug.Log ("up punch");
+//				break;
+//
+//			case "downpunch":
+//				Debug.Log ("up down punch");
+//				break;
+//
+//			case "rightpunch":
+//				Debug.Log ("punch up down punch");
+//				break;
+//
+//			case "leftpunch":
+//				Debug.Log ("punch up down punch");
+//				break;
+//
+//			case "punchpunchright":
+//				Debug.Log ("punch up down punch");
+//				break;
+//
+//			case "punchpunchleft":
+//				Debug.Log ("punch up down punch");
+//				break;
+//
+//			case "punchpunchup":
+//				Debug.Log ("punch up down punch");
+//				break;
+//
+//			case "punchpunchdown":
+//				Debug.Log ("punch up down punch");
+//				break;
+//
+//			default:
+//				Debug.Log (comboCodeDefault);
+//				break;
 
 			//ExecuteCombo(input);
-			}//end switch
+			//}//end switch
 		}//end if
 	}//end setcombo
 	#endregion
