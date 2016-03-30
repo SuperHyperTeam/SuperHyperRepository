@@ -1,12 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/AnimateCanvasSprite.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/SimplePlatformController.cs">
     <Files>
-      <File FileName="Assets/AnimateCanvasSprite.cs" Line="18" Column="34" />
-      <File FileName="Assets/_Scripts/GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/SimplePlatformController.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/CollisionCheck.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/CountdownTimer.cs" Line="31" Column="31" />
+      <File FileName="Assets/_Scripts/SimplePlatformController.cs" Line="260" Column="22" />
+      <File FileName="Assets/_Scripts/GameManager.cs" Line="33" Column="27" />
+      <File FileName="Assets/_Scripts/CountdownTimer.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/Combos.cs" Line="204" Column="1" />
+      <File FileName="Assets/Plugins/Pixelplacement/iTween/Sample/MoveSample.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
