@@ -22,35 +22,16 @@ public class SimplePlatformController : MonoBehaviour {
 	public string punchInputName;
 	public string horInputName;
 	public string vertInputName;
-	[Header ("Punching")]
-	public float horPunchForce;
-	public float vertPunchForce;
-	public float knockbackForce;
-	public float superPunchTime;
-	public float hyperPunchTime;
-	public float superHyperPunchTime;
-
-	private bool punch;
-	[HideInInspector]public bool punchLeft, punchRight, punchUp, punchDown; //if punching and what direction
-
-	[Header ("Timing")]
-	//Gravity Delay
-	public float gravModifier; //What to make the gravity while punching
-	private float currentGrav;
-	private bool runGravTimer;
-	public float gravTime;
-	private float gravTimer;
-	public bool knockback;
-	private bool runKnockbackTimer;
-	public float knockbackTime;
-	private float knockbackTimer;
 
 	//Punch Duration
 	private bool runPunchTimer;
 	public float punchTime;
 	private float punchTimer;
+	public float punchDistance;
 
-	[HideInInspector]public bool inControl;
+	public bool inControl;
+
+	public float punchForce;
 
 	private bool grounded = false;
 	private Animator anim;
@@ -58,40 +39,50 @@ public class SimplePlatformController : MonoBehaviour {
 
 	public BoxCollider2D upHitbox, downHitbox, horHitbox;
 	public GameManager gameManager;
-	public GameObject forwardTarget;
-	public GameObject upTarget;
-	public GameObject downTarget;
+
+	[HideInInspector]public AudioSource audioSource;
+	public AudioClip punchSound;
+	public AudioClip deathSound;
+	public AudioClip hitSound;
 
 	//private Vector2 velocityZero = Vector2(0,0);
 
 	[HideInInspector] public bool dead;
+	private bool isPunching;
+	private int punchCount = 0;
+	public float sPunchCost, hPunchCost, shPunchCost;
 
 	private int playerForward;
 	
 	// Use this for initialization
-	void Awake () 
+	public void Init () 
 	{
+		isPunching = false;
+		audioSource = GetComponent<AudioSource> ();
+		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager>();
+		if (gameObject.tag == "Player1"){
+			energyBarSlider = GameObject.Find ("p1Energy").GetComponent<Slider> ();
+//			GetComponent<Combos> ().energyBarSlider = energyBarSlider;
+			horInputName = "Horizontal";
+			vertInputName = "Vertical";
+			punchInputName = "Jump";
+		}
+		else if (gameObject.tag == "Player2"){
+			energyBarSlider = GameObject.Find ("p2Energy").GetComponent<Slider> ();
+//			GetComponent<Combos> ().energyBarSlider = energyBarSlider;
+			horInputName = "Horizontal2";
+			vertInputName = "Vertical2";
+			punchInputName = "Jump2";
+		}
 		playerForward = 1;
 		upHitbox.enabled = false;
 		downHitbox.enabled = false;
 		horHitbox.enabled = false;
-//		if (energyBarSlider == null){
-//			if (gameObject.name == "Player1") {
-//				energyBarSlider = GameObject.Find ("p1Energy").GetComponent<Slider> ();
-//			}
-//			if (gameObject.name == "Player2"){
-//				energyBarSlider = GameObject.Find ("p2Energy").GetComponent<Slider> ();
-//			}
-//		}
+
 		anim = GetComponent<Animator>();
 		rb2d = GetComponent<Rigidbody2D>();
-		currentGrav = rb2d.gravityScale;
 
 		inControl = true;
-
-		//Initialize bools
-		runGravTimer = runPunchTimer = false;
-		punch = punchDown = punchLeft = punchRight = punchUp = false;
 	}
 	
 	// Update is called once per frame
@@ -104,51 +95,34 @@ public class SimplePlatformController : MonoBehaviour {
 			energyBarSlider.value += energyGain;
 		}
 
-		if(runGravTimer){
-			gravTimer += Time.deltaTime;
-			if(gravTimer >= gravTime){
-				runGravTimer = false;
-				currentGrav = 1f;
-				gravTimer = 0f;
-			}
-		}
-		if (runPunchTimer) {
+		if (runPunchTimer){
 			punchTimer += Time.deltaTime;
-			if (punchTimer >= punchTime) {
-				rb2d.velocity = Vector2.zero;
+			Debug.Log (punchCount);
+			if (punchTimer >= punchTime){
+				punchCount = 0;
 				runPunchTimer = false;
-				punch = false;
-				punchUp = punchDown = punchRight = punchLeft = false;
-				punchTimer = 0f;
-			}
-		}
-		if (runKnockbackTimer){
-			knockbackTimer += Time.deltaTime;
-			if (knockbackTimer >= knockbackTime){
-				rb2d.velocity = Vector2.zero;
-				runKnockbackTimer = false;
-				inControl = true;
 			}
 		}
 			
-		rb2d.gravityScale = currentGrav;
 	}
 
 	public void Knockback(){
 		rb2d.velocity = Vector2.zero;
 		inControl = false;
 		runPunchTimer = false;
-		punch = false;
-		knockbackTimer = 0f;
-		runKnockbackTimer = true;
-
 	}
 
 	public void Knockout(){
+		if (deathSound != null){
+			audioSource.PlayOneShot (deathSound);
+		}
+		//Debug.Log ("Knocked out");
 		if (gameObject.tag == "Player1"){
+			//Debug.Log (gameObject.tag);
 			gameManager.isAliveP1 = false;
 		}
 		if (gameObject.tag == "Player2"){
+			//Debug.Log (gameObject.tag);
 			gameManager.isAliveP2 = false;
 		}
 		gameManager.DoPointScoring ();
@@ -160,37 +134,85 @@ public class SimplePlatformController : MonoBehaviour {
 		float h = Input.GetAxis (horInputName);
 		float v = Input.GetAxis (vertInputName);
 		bool p = Input.GetButtonDown (punchInputName);
-		
-		//anim.SetFloat("Speed", Mathf.Abs(h));
 
-//		if (punch) {
-//			if (punchRight) {
-//				SuperPunch (Vector2.right, horPunchForce, horHitbox);
-//			}
-//			if (punchLeft) {
-//				SuperPunch (Vector2.left, horPunchForce, horHitbox);
-//			}
-//			if (punchUp) {
-//				SuperPunch (Vector2.up, vertPunchForce, upHitbox);
-//			}
-//			if (punchDown) {
-//				SuperPunch (Vector2.down, vertPunchForce, downHitbox);
-//			}
-//		}
-		if (grounded) {
-			if (h * rb2d.velocity.x < maxSpeed)
-				rb2d.AddForce (Vector2.right * h * moveForce);
-		
-			if (Mathf.Abs (rb2d.velocity.x) > maxSpeed)
-				rb2d.velocity = new Vector2 (Mathf.Sign (rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
-		} else {
-			if (h * rb2d.velocity.x < maxAirSpeed)
-				rb2d.AddForce (Vector2.right * h * moveForce);
+		if (p){
+			if (punchCount >= 5 && energyBarSlider.value > 0.15f) {
+				if (energyBarSlider.value > shPunchCost) {
+					//Debug.Log ("super hyper punch");
+					punchTimer = 0;
+					runPunchTimer = true;
+					if (v == 1) {
+						StartSuperHyperPunch ("up");
+					}
+					if (v == -1) {
+						StartSuperHyperPunch ("down");
+					}
+					if (h == 1) {
+						StartSuperHyperPunch ("right");
+					}
+					if (h == -1) {
+						StartSuperHyperPunch ("left");
+					}
+				}
+			}
+			if (punchCount >= 3 && punchCount < 5 && energyBarSlider.value > 0.1f) {
+					if (energyBarSlider.value > hPunchCost) {
+						//Debug.Log ("hyper punch");
+					punchTimer = 0;
+					runPunchTimer = true;
+						if (v == 1) {
+							StartHyperPunch ("up");
+						}
+						if (v == -1) {
+							StartHyperPunch ("down");
+						}
+						if (h == 1) {
+							StartHyperPunch ("right");
+						}
+						if (h == -1) {
+							StartHyperPunch ("left");
+						}
 
-			if (Mathf.Abs (rb2d.velocity.x) > maxAirSpeed)
-				rb2d.velocity = new Vector2 (Mathf.Sign (rb2d.velocity.x) * maxAirSpeed, rb2d.velocity.y);
+				}
+			}
+			if (punchCount < 3 && energyBarSlider.value > 0.05f) {
+				if (energyBarSlider.value > sPunchCost) {
+//					Debug.Log ("super punch");
+//					Debug.Log ("v: " + v);
+//					Debug.Log ("h: " +h);
+					punchTimer = 0;
+					runPunchTimer = true;
+					if (v == 1) {
+						StartSuperPunch ("up");
+					}
+					if (v == -1) {
+						StartSuperPunch ("down");
+					}
+					if (h == 1) {
+						StartSuperPunch ("right");
+					}
+					if (h == -1) {
+						StartSuperPunch ("left");
+					}
+				}
+			}
 		}
+			
+		if (inControl && !isPunching) {
+			if (grounded) {
+				if (h * rb2d.velocity.x < maxSpeed)
+					rb2d.AddForce (Vector2.right * h * moveForce);
+		
+				if (Mathf.Abs (rb2d.velocity.x) > maxSpeed)
+					rb2d.velocity = new Vector2 (Mathf.Sign (rb2d.velocity.x) * maxSpeed, rb2d.velocity.y);
+			} else {
+				if (h * rb2d.velocity.x < maxAirSpeed)
+					rb2d.AddForce (Vector2.right * h * moveForce);
 
+				if (Mathf.Abs (rb2d.velocity.x) > maxAirSpeed)
+					rb2d.velocity = new Vector2 (Mathf.Sign (rb2d.velocity.x) * maxAirSpeed, rb2d.velocity.y);
+			}
+		}
 		if (inControl) {
 			if (h > 0 && !facingRight)
 				Flip ();
@@ -200,130 +222,291 @@ public class SimplePlatformController : MonoBehaviour {
 	}
 
 	public void SetTimers(){
-		punch = true;
 		punchTimer = 0f;
 		runPunchTimer = true;
-		gravTimer = 0f;
-		runGravTimer = true;
-		currentGrav = gravModifier;
 	}
 
-//	public void SuperPunch(Vector2 direction, float force, BoxCollider2D hitbox){
-//		if (energyBarSlider.value > 0.05f) 
-//		{
-//			energyBarSlider.value -= 0.05f;
-//			rb2d.AddForce (direction * force, ForceMode2D.Impulse);
-//			hitbox.enabled = true;
-//		}
-//	}
-
-	//SUPER PUNCH
-	public void SuperPunch (string direction){
-		if (direction == "up" && inControl){
-			if (energyBarSlider.value > 0.2f) 
-			{
-				energyBarSlider.value -= 0.2f;
-				iTween.MoveTo (gameObject, upTarget.transform.position, hyperPunchTime);
-				upHitbox.enabled = true;
-				StartCoroutine (SetHitbox (superPunchTime));
+	public void StartSuperPunch(string direction){
+		isPunching = true;
+		StartCoroutine (SuperPunch (direction));
+			if (direction == "up"){
+				energyBarSlider.value -= 0.05f;
+				anim.SetInteger ("PunchType",0);
+				anim.SetTrigger ("UpPunch");
 			}
-		}
-		if (direction == "down" && inControl){
-			if (energyBarSlider.value > 0.2f) 
-			{
-				energyBarSlider.value -= 0.2f;
-				iTween.MoveTo (gameObject, downTarget.transform.position, hyperPunchTime);
-				downHitbox.enabled = true;
-				StartCoroutine (SetHitbox (superPunchTime));
+			if(direction == "down"){
+				energyBarSlider.value -= 0.05f;
+				anim.SetInteger ("PunchType",0);
+				anim.SetTrigger ("DownPunch");
 			}
-		}
-		if (direction == "forward" && inControl){
-			if (energyBarSlider.value > 0.2f)
-			{
-				energyBarSlider.value -= 0.2f;
-				iTween.MoveTo (gameObject, forwardTarget.transform.position, hyperPunchTime);
-				horHitbox.enabled = true;
-				StartCoroutine (SetHitbox (superPunchTime));
+			if(direction == "right"){
+				energyBarSlider.value -= 0.05f;
+				anim.SetInteger ("PunchType",0);
+				anim.SetTrigger ("RightPunch");
 			}
-		}
-	}
-
-	//HYPER PUNCH
-	public void HyperPunch (string direction){
-		if (direction == "up" && inControl){
-			if (energyBarSlider.value > 0.2f) 
-			{
-				energyBarSlider.value -= 0.2f;
-				iTween.MoveTo (gameObject, upTarget.transform.position, hyperPunchTime);
-				upHitbox.enabled = true;
-				StartCoroutine (SetHitbox (hyperPunchTime));
+			if(direction == "left"){
+				energyBarSlider.value -= 0.05f;
+				anim.SetInteger ("PunchType",0);
+				anim.SetTrigger ("RightPunch");
 			}
-		}
-		if (direction == "down" && inControl){
-			if (energyBarSlider.value > 0.2f) 
-			{
-				energyBarSlider.value -= 0.2f;
-				iTween.MoveTo (gameObject, downTarget.transform.position, hyperPunchTime);
-				downHitbox.enabled = true;
-				StartCoroutine (SetHitbox (hyperPunchTime));
-			}
-		}
-		if (direction == "forward" && inControl){
-			if (energyBarSlider.value > 0.2f) {
-				energyBarSlider.value -= 0.2f;
-				iTween.MoveTo (gameObject, forwardTarget.transform.position, hyperPunchTime);
-				horHitbox.enabled = true;
-				StartCoroutine (SetHitbox (superPunchTime));
-			}
-		}
-	}
-
-	//SUPERHYPER PUNCH
-	public void SuperHyperPunch (string direction){
-		if (direction == "up" && inControl){
-			if (energyBarSlider.value > 0.2f) 
-			{
-				energyBarSlider.value -= 0.2f;
-				iTween.MoveTo (gameObject, upTarget.transform.position, hyperPunchTime);
-				upHitbox.enabled = true;
-				StartCoroutine (SetHitbox (superHyperPunchTime));
-
-			}
-		}
-		if (direction == "down" && inControl){
-			if (energyBarSlider.value > 0.2f) 
-			{
-				energyBarSlider.value -= 0.2f;
-				iTween.MoveTo (gameObject, downTarget.transform.position, hyperPunchTime);
-				downHitbox.enabled = true;
-				StartCoroutine (SetHitbox (superHyperPunchTime));
-			}
-		}
-		if (direction == "forward" && inControl){
-			if (energyBarSlider.value > 0.2f) 
-			{
-				energyBarSlider.value -= 0.2f;
-				iTween.MoveTo (gameObject, forwardTarget.transform.position, hyperPunchTime);
-				horHitbox.enabled = true;
-				StartCoroutine (SetHitbox (superPunchTime));
-			}
-		}
+			punchCount += 1;
+			Debug.Log (punchCount);
 	}
 		
-//	void OnTriggerEnter2D(Collider2D other){
-//		if (other.name == "KillBox"){
-//			Knockout ();
-////			if (gameObject.tag == "Player1"){
-////				gameManager.isAliveP1 = false;
-////			}
-////			if (gameObject.tag == "Player2"){
-////				gameManager.isAliveP2 = false;
-////			}
-////			gameManager.DoPointScoring ();
-////			gameObject.SetActive (false);
-//			//Destroy (gameObject);
+	private IEnumerator SuperPunch(string direction){
+		audioSource.PlayOneShot (punchSound);
+		float time = 0f;
+		if (inControl) {
+			while (punchDistance > time){
+				inControl = false;
+				time += Time.deltaTime;
+				if (direction == "up"){
+					rb2d.velocity = Vector2.up * punchForce;
+				}
+				if (direction == "down"){
+					rb2d.velocity = Vector2.down * punchForce;
+				}
+				if (direction == "right"){
+					rb2d.velocity = Vector2.right * punchForce;
+				}
+				if (direction == "left"){
+					rb2d.velocity = Vector2.left * punchForce;
+				}
+				yield return 0;
+			}
+			rb2d.velocity = Vector2.zero;
+			isPunching = false;
+			inControl = true;
+		}
+	}
+
+	public void StartHyperPunch(string direction){
+		isPunching = true;
+		StartCoroutine (HyperPunch (direction));
+		if (direction == "up"){
+			energyBarSlider.value -= 0.1f;
+			anim.SetInteger ("PunchType",1);
+			anim.SetTrigger ("UpPunch");
+		}
+		if(direction == "down"){
+			energyBarSlider.value -= 0.1f;
+			anim.SetInteger ("PunchType",1);
+			anim.SetTrigger ("DownPunch");
+		}
+		if(direction == "right"){
+			energyBarSlider.value -= 0.1f;
+			anim.SetInteger ("PunchType",1);
+			anim.SetTrigger ("RightPunch");
+		}
+		if(direction == "left"){
+			energyBarSlider.value -= 0.1f;
+			anim.SetInteger ("PunchType",1);
+			anim.SetTrigger ("RightPunch");
+		}
+		punchCount += 1;
+		Debug.Log (punchCount);
+	}
+
+	private IEnumerator HyperPunch(string direction){
+		audioSource.PlayOneShot (punchSound);
+		float time = 0f;
+		if (inControl) {
+			while (punchDistance > time){
+				inControl = false;
+				time += Time.deltaTime;
+				if (direction == "up"){
+					rb2d.velocity = Vector2.up * punchForce * 2;
+				}
+				if (direction == "down"){
+					rb2d.velocity = Vector2.down * punchForce * 2;
+				}
+				if (direction == "right"){
+					rb2d.velocity = Vector2.right * punchForce * 2;
+				}
+				if (direction == "left"){
+					rb2d.velocity = Vector2.left * punchForce * 2;
+				}
+				yield return 0;
+			}
+			rb2d.velocity = Vector2.zero;
+			isPunching = false;
+			inControl = true;
+		}
+	}
+
+	public void StartSuperHyperPunch(string direction){
+		isPunching = true;
+		StartCoroutine (SuperHyperPunch (direction));
+		if (direction == "up"){
+			energyBarSlider.value -= .15f;
+			anim.SetInteger ("PunchType",2);
+			anim.SetTrigger ("UpPunch");
+		}
+		if(direction == "down"){
+			energyBarSlider.value -= .15f;
+			anim.SetInteger ("PunchType",2);
+			anim.SetTrigger ("DownPunch");
+		}
+		if(direction == "right"){
+			energyBarSlider.value -= .15f;
+			anim.SetInteger ("PunchType",2);
+			anim.SetTrigger ("RightPunch");
+		}
+		if(direction == "left"){
+			energyBarSlider.value -= .15f;
+			anim.SetInteger ("PunchType",2);
+			anim.SetTrigger ("RightPunch");
+		}
+		punchCount = 0;
+		Debug.Log (punchCount);
+	}
+
+	private IEnumerator SuperHyperPunch(string direction){
+		audioSource.PlayOneShot (punchSound);
+		float time = 0f;
+		if (inControl) {
+			while (punchDistance > time){
+				inControl = false;
+				time += Time.deltaTime;
+				if (direction == "up"){
+					rb2d.velocity = Vector2.up * punchForce * 3;
+				}
+				if (direction == "down"){
+					rb2d.velocity = Vector2.down * punchForce * 3;
+				}
+				if (direction == "right"){
+					rb2d.velocity = Vector2.right * punchForce * 3;
+				}
+				if (direction == "left"){
+					rb2d.velocity = Vector2.left * punchForce * 3;
+				}
+				yield return 0;
+			}
+			rb2d.velocity = Vector2.zero;
+			isPunching = false;
+			inControl = true;
+		}
+	}
+
+	//SUPER PUNCH
+//	public void SuperPunch (string direction){
+//		audioSource.PlayOneShot (punchSound);
+//		if (direction == "up" && inControl){
+//			if (energyBarSlider.value > 0.2f)
+//			{
+//				energyBarSlider.value -= 0.2f;
+//				iTween.MoveTo (gameObject, upTarget.transform.position, hyperPunchTime);
+//				upHitbox.enabled = true;
+//				anim.SetInteger ("PunchType",0);
+//				anim.SetTrigger ("UpPunch");
+//				StartCoroutine (SetHitbox (superPunchTime));
+//			}
+//		}
+//		if (direction == "down" && inControl){
+//			if (energyBarSlider.value > 0.2f) 
+//			{
+//				energyBarSlider.value -= 0.2f;
+//				iTween.MoveTo (gameObject, downTarget.transform.position, hyperPunchTime);
+//				downHitbox.enabled = true;
+//				anim.SetInteger ("PunchType",0);
+//				anim.SetTrigger ("DownPunch");
+//				StartCoroutine (SetHitbox (superPunchTime));
+//			}
+//		}
+//		if (direction == "forward" && inControl){
+//			if (energyBarSlider.value > 0.2f)
+//			{
+//				energyBarSlider.value -= 0.2f;
+//				iTween.MoveTo (gameObject, forwardTarget.transform.position, hyperPunchTime);
+//				horHitbox.enabled = true;
+//				anim.SetInteger ("PunchType",0);
+//				anim.SetTrigger ("RightPunch");
+//				StartCoroutine (SetHitbox (superPunchTime));
+//			}
 //		}
 //	}
+
+//	//HYPER PUNCH
+//	public void HyperPunch (string direction){
+//		audioSource.PlayOneShot (punchSound);
+//		if (direction == "up" && inControl){
+//			if (energyBarSlider.value > 0.2f) 
+//			{
+//				energyBarSlider.value -= 0.2f;
+//				iTween.MoveTo (gameObject, upTargetHyper.transform.position, hyperPunchTime);
+//				upHitbox.enabled = true;
+//				anim.SetInteger ("PunchType",1);
+//				anim.SetTrigger ("UpPunch");
+//				StartCoroutine (SetHitbox (hyperPunchTime));
+//			}
+//		}
+//		if (direction == "down" && inControl){
+//			if (energyBarSlider.value > 0.2f) 
+//			{
+//				energyBarSlider.value -= 0.2f;
+//				iTween.MoveTo (gameObject, downTargetHyper.transform.position, hyperPunchTime);
+//				downHitbox.enabled = true;
+//				anim.SetInteger ("PunchType",1);
+//				anim.SetTrigger ("DownPunch");
+//				StartCoroutine (SetHitbox (hyperPunchTime));
+//			}
+//		}
+//		if (direction == "forward" && inControl){
+//			if (energyBarSlider.value > 0.2f) {
+//				energyBarSlider.value -= 0.2f;
+//				iTween.MoveTo (gameObject, forwardTargetHyper.transform.position, hyperPunchTime);
+//				horHitbox.enabled = true;
+//				anim.SetInteger ("PunchType",1);
+//				anim.SetTrigger ("RightPunch");
+//				StartCoroutine (SetHitbox (superPunchTime));
+//			}
+//		}
+//	}
+
+//	//SUPERHYPER PUNCH
+//	public void SuperHyperPunch (string direction){
+//		audioSource.PlayOneShot (punchSound);
+//		if (direction == "up" && inControl){
+//			if (energyBarSlider.value > 0.2f) 
+//			{
+//				energyBarSlider.value -= 0.2f;
+//				iTween.MoveTo (gameObject, upTargetSH.transform.position, hyperPunchTime);
+//				upHitbox.enabled = true;
+//				anim.SetInteger ("PunchType",2);
+//				anim.SetTrigger ("UpPunch");
+//				StartCoroutine (SetHitbox (superHyperPunchTime));
+//
+//			}
+//		}
+//		if (direction == "down" && inControl){
+//			if (energyBarSlider.value > 0.2f) 
+//			{
+//				energyBarSlider.value -= 0.2f;
+//				iTween.MoveTo (gameObject, downTargetSH.transform.position, hyperPunchTime);
+//				downHitbox.enabled = true;
+//				anim.SetInteger ("PunchType",2);
+//				anim.SetTrigger ("DownPunch");
+//				StartCoroutine (SetHitbox (superHyperPunchTime));
+//			}
+//		}
+//		if (direction == "forward" && inControl){
+//			if (energyBarSlider.value > 0.2f) 
+//			{
+//				energyBarSlider.value -= 0.2f;
+//				iTween.MoveTo (gameObject, forwardTargetSH.transform.position, hyperPunchTime);
+//				horHitbox.enabled = true;
+//				anim.SetInteger ("PunchType",2);
+//				anim.SetTrigger ("RightPunch");
+//				StartCoroutine (SetHitbox (superPunchTime));
+//			}
+//		}
+//	}
+		
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.name == "KillBox"){
+			Knockout ();
+		}
+	}
 
 	IEnumerator SetHitbox(float resetTime){
 		yield return new WaitForSeconds (resetTime);
@@ -339,9 +522,5 @@ public class SimplePlatformController : MonoBehaviour {
 		theScale.x *= -1;
 		playerForward *= -1;
 		transform.localScale = theScale;
-	}
-
-	void OnCollisionEnter2D(){
-		iTween.Stop ();
 	}
 }

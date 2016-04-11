@@ -1,0 +1,166 @@
+fileFormatVersion: 2
+guid: d066bf7485b424c838f8b026fec01bec
+timeCreated: 1459475273
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: lgw-up_0
+    21300002: lgw-up_1
+    21300004: lgw-up_2
+    21300006: lgw-up_3
+    21300008: lgw-up_4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: lgw-up_0
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 22
+        width: 48
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -2, y: 26.5}
+        - {x: -24, y: 16.5}
+        - {x: -24, y: -26.5}
+        - {x: 23, y: -26.5}
+        - {x: 24, y: -21.5}
+        - {x: 24, y: 9.5}
+        - {x: 21, y: 26.5}
+    - name: lgw-up_1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 25
+        width: 44
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 0, y: -25}
+        - {x: 21, y: -25}
+        - {x: 22, y: -22}
+        - {x: 22, y: 16}
+        - {x: 20, y: 25}
+        - {x: -22, y: 25}
+        - {x: -22, y: -21}
+        - {x: -21, y: -25}
+        - {x: -1, y: -25}
+        - {x: 1, y: -17}
+        - {x: 0, y: -22}
+    - name: lgw-up_2
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 24
+        width: 63
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.5, y: 29}
+        - {x: -10.5, y: 29}
+        - {x: -17.5, y: 25}
+        - {x: -31.5, y: 7}
+        - {x: -31.5, y: -18}
+        - {x: -27.5, y: -29}
+        - {x: 31.5, y: -29}
+        - {x: 31.5, y: 17}
+        - {x: 24.5, y: 22}
+      - - {x: 28.5, y: -20}
+        - {x: 30.5, y: -22}
+        - {x: 31.5, y: -22}
+        - {x: 31.5, y: -17}
+        - {x: 29.5, y: -17}
+    - name: lgw-up_3
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 24
+        width: 37
+        height: 68
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4.5, y: 34}
+        - {x: -18.5, y: 19}
+        - {x: -18.5, y: -25}
+        - {x: -13.5, y: -34}
+        - {x: 18.5, y: -34}
+        - {x: 18.5, y: 34}
+      - - {x: -8.5, y: 31}
+        - {x: -7.5, y: 28}
+        - {x: -4.5, y: 28}
+        - {x: -2.5, y: 30}
+        - {x: -3.5, y: 33}
+        - {x: -6.5, y: 33}
+    - name: lgw-up_4
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 22
+        width: 35
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -5.5, y: 39}
+        - {x: -17.5, y: 23}
+        - {x: -17.5, y: -39}
+        - {x: 17.5, y: -39}
+        - {x: 17.5, y: 39}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
