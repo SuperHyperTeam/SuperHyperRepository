@@ -13,6 +13,13 @@ public class CountdownTimer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
+	}
+
+	public void Init(SimplePlatformController p1, SimplePlatformController p2){
+		gameManager = GameObject.Find ("GameManager").GetComponent<GameManager>();
+		player1 = p1;
+		player2 = p2;
 		winText.text = "Round 1";
 		StartTimeText = GetComponent<Text> ();
 		countdownTimer = roundStartTime;

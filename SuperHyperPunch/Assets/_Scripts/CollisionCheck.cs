@@ -30,12 +30,14 @@ public class CollisionCheck : MonoBehaviour {
 //					ForceMode2D.Impulse);
 			}
 			else if (c.collider.tag == "Hitbox" && c.otherCollider.tag == "Player1"){
+				player.audioSource.PlayOneShot (player.hitSound);
 				GameObject otherPlayer = c.otherCollider.gameObject;
 				if (otherPlayer.gameObject.activeSelf) {
 					c.otherCollider.GetComponent<SimplePlatformController> ().Knockout ();
 				}
 			}
 			else if (c.collider.tag == "Hitbox" && c.otherCollider.tag == "Player2"){
+				player.audioSource.PlayOneShot (player.hitSound);
 				GameObject otherPlayer = c.otherCollider.gameObject;
 				if (otherPlayer.gameObject.activeSelf) {
 					c.otherCollider.GetComponent<SimplePlatformController> ().Knockout ();
