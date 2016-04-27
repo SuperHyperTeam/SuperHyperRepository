@@ -182,6 +182,8 @@ public class GameManager : MonoBehaviour {
 			Debug.Log ("player1 is alive");
 			roundsWonP1 += 1;
 			roundsWonP2 -= 1;
+			player1.energyBarSlider.value = 1f;
+			player2.energyBarSlider.value = 1f;
 			roundWinnerPlayer1 = true;
 			if (roundsWonP1 == 6){
 				DrawScoreboard ();
@@ -256,6 +258,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void QuitToMenu(){
+		player1Prefab = null;
+		player2Prefab = null;
 		SceneManager.LoadScene ("StartScreen");
 	}
 

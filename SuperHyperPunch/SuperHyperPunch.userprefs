@@ -1,13 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/SimplePlatformController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Scripts/MenuManager.cs">
     <Files>
-      <File FileName="Assets/_Scripts/SimplePlatformController.cs" Line="355" Column="27" />
-      <File FileName="Assets/_Scripts/Combos.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/SimplePlatformControllerBACKUP.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/SimplePlatformController.cs" Line="7" Column="29" />
       <File FileName="Assets/_Scripts/CollisionCheck.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/CombosBACKUP.cs" Line="1" Column="1" />
-      <File FileName="Assets/_Scripts/GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/GameManager.cs" Line="189" Column="16" />
+      <File FileName="Assets/_Scripts/AnimateCanvasSprite.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Scripts/MenuManager.cs" Line="30" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

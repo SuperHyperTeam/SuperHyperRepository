@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: b511368aa649a40458c531ca2c8ddce0
+timeCreated: 1461118241
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: r-forward-animated_0
+    21300002: r-forward-animated_1
+    21300004: r-forward-animated_2
+    21300006: r-forward-animated_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: r-forward-animated_0
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 2
+        width: 43
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -14.5, y: 30.5}
+        - {x: -21.5, y: 20.5}
+        - {x: -21.5, y: -21.5}
+        - {x: -20.5, y: -27.5}
+        - {x: -20.5, y: -30.5}
+        - {x: 21.5, y: -30.5}
+        - {x: 21.5, y: 27.5}
+        - {x: 15.5, y: 30.5}
+    - name: r-forward-animated_1
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 2
+        width: 49
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9.5, y: -28.5}
+        - {x: 18.5, y: -28.5}
+        - {x: 24.5, y: -17.5}
+        - {x: 24.5, y: 18.5}
+        - {x: 18.5, y: 28.5}
+        - {x: -10.5, y: 28.5}
+        - {x: -22.5, y: 26.5}
+        - {x: -24.5, y: 25.5}
+        - {x: -24.5, y: -11.5}
+        - {x: -19.5, y: -28.5}
+        - {x: 0.5, y: -28.5}
+        - {x: 2.5, y: -25.5}
+        - {x: 2.5, y: -23.5}
+        - {x: 6.5, y: -26.5}
+    - name: r-forward-animated_2
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 7
+        width: 46
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 1, y: -26.5}
+        - {x: 15, y: -26.5}
+        - {x: 23, y: -11.5}
+        - {x: 23, y: 19.5}
+        - {x: 11, y: 26.5}
+        - {x: -23, y: 26.5}
+        - {x: -23, y: 7.5}
+        - {x: -17, y: -26.5}
+        - {x: -2, y: -26.5}
+        - {x: -1, y: -23.5}
+        - {x: -1, y: -21.5}
+        - {x: -1, y: -24.5}
+    - name: r-forward-animated_3
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 2
+        width: 40
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -18, y: 30}
+        - {x: -20, y: 25}
+        - {x: -20, y: -28}
+        - {x: -19, y: -30}
+        - {x: 17, y: -30}
+        - {x: 20, y: -27}
+        - {x: 20, y: 30}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
